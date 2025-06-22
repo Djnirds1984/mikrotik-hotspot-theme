@@ -31,33 +31,36 @@
 
         $(if error)<div class="error">$(error)</div>$(endif)
 
-        <!-- IMPORTANT: The form must be named "login" -->
         <form name="login" action="$(link-login-only)" method="post">
             <input type="hidden" name="dst" value="$(link-orig)" />
             <input type="hidden" name="popup" value="true" />
-            <!-- The username input must be named "username" -->
+            <input type="hidden" name="chap-id" value="$(chap-id)">
+            <input type="hidden" name="chap-challenge" value="$(challenge)">
             <input name="username" type="text" placeholder="Enter Your Voucher Code Here" value="$(username)">
-            <!-- The password input must be present (even if hidden) and named "password" -->
             <input name="password" type="hidden">
             <button type="submit">Get Online</button>
         </form>
 
         <div class="trial-section">
             <p style="margin: 0 0 10px 0; font-size: 0.9em;">Or get a one-time free preview:</p>
-            <a href="#" onclick="loginTrial(); return false;" class="trial-button">Free Trial</a>
+            <a href="#" onclick="loginTrial(); return false;" class="trial-button">Get 30-Minute Free Trial</a>
         </div>
         
         <a href="https://933cabff.terrabytes-store-klcis.pages.dev" class="buy-voucher-link">Buy a Voucher (GCash | Maya)</a>
         <a href="https://s4eyfih4u2kca.mocha.app" class="casino-link">LUCKY CASINO</a>
     </div>
 
-<!-- IMPORTANT: This script must be present and correct -->
+<!--  ===== UPDATED SCRIPT FOR MAC ADDRESS TRIAL =====  -->
 <script type="text/javascript">
     function loginTrial() {
-        document.login.username.value = "trial";
+        // Set the username to "T-" followed by the user's MAC address
+        document.login.username.value = "T-" + "$(mac)";
+        // Ensure the password field is empty
         document.login.password.value = ""; 
+        // Submit the form
         document.login.submit();
     }
 </script>
+<!--  ================================================  -->
 </body>
 </html>
