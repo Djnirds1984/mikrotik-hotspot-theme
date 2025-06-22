@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terrabytes Hotspot Voucher</title>
     <style>
-        /* All CSS remains the same */
-        body { font-family: 'Poppins', sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://images.unsplash.com/photo-1511920183353-3c9c9b0a7a4c?q=80&w=1887'); background-size: cover; }
-        .login-box { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 30px 40px; border-radius: 12px; text-align: center; max-width: 350px; width: 90%; }
+        body { font-family: 'Poppins', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://images.unsplash.com/photo-1511920183353-3c9c9b0a7a4c?q=80&w=1887'); background-size: cover; background-position: center; }
+        .login-box { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 30px 40px; border-radius: 12px; text-align: center; max-width: 350px; width: 90%; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); }
         .logo { max-width: 150px; margin-bottom: 20px; }
         h2 { font-size: 1.5em; margin-bottom: 20px; color: #333; }
-        input[type="text"], input[type="password"] { width: calc(100% - 24px); padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
-        button { width: 100%; padding: 12px; border: none; border-radius: 5px; background-color: #6F4E37; color: white; font-size: 16px; cursor: pointer; }
-        .error { color: #D8000C; font-weight: bold; margin-bottom: 10px; }
-        .buy-voucher-link, .casino-link { display: block; text-decoration: none; margin-top: 15px; padding: 12px; color: white; border-radius: 5px; font-size: 16px; }
+        input[type="text"] { width: calc(100% - 24px); padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 5px; background-color: #6F4E37; color: white; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+        button:hover { background-color: #5a3f2b; }
+        .error { color: #D8000C; background: #FFBABA; padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
+        .buy-voucher-link, .casino-link { display: block; text-decoration: none; margin-top: 15px; padding: 12px; color: white; border-radius: 5px; font-size: 16px; transition: background-color 0.3s; }
         .buy-voucher-link { background-color: #A0522D; }
+        .buy-voucher-link:hover { background-color: #844324; }
         .casino-link { background-color: #dc3545; font-weight: bold; }
+        .casino-link:hover { background-color: #c82333; }
         .trial-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
-        .trial-button { display: inline-block; text-decoration: none; background-color: #6c757d; color: white; padding: 8px 15px; font-size: 14px; border-radius: 4px; }
+        .trial-button { display: inline-block; text-decoration: none; background-color: #6c757d; color: white; padding: 8px 15px; font-size: 14px; border-radius: 4px; transition: background-color 0.3s; cursor: pointer; }
+        .trial-button:hover { background-color: #5a6268; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -26,38 +29,35 @@
         <img src="my-new-logo.png" alt="Terrabytes Logo" class="logo">
         <h2>WELCOME TO TERRABYTES HOTSPOT VOUCHER</h2>
 
-        $(if error)<div class="error">Error: $(error)</div>$(endif)
+        $(if error)<div class="error">$(error)</div>$(endif)
 
+        <!-- IMPORTANT: The form must be named "login" -->
         <form name="login" action="$(link-login-only)" method="post">
             <input type="hidden" name="dst" value="$(link-orig)" />
             <input type="hidden" name="popup" value="true" />
-            
-            <!-- CHANGE #1: The placeholder text is now more specific -->
+            <!-- The username input must be named "username" -->
             <input name="username" type="text" placeholder="Enter Your Voucher Code Here" value="$(username)">
-
-            <!-- CHANGE #2: The password input is now hidden from the user -->
+            <!-- The password input must be present (even if hidden) and named "password" -->
             <input name="password" type="hidden">
-            
             <button type="submit">Get Online</button>
         </form>
 
         <div class="trial-section">
             <p style="margin: 0 0 10px 0; font-size: 0.9em;">Or get a one-time free preview:</p>
-            <a href="#" onclick="loginTrial(); return false;" class="trial-button">Get 30-Minute Free Trial</a>
+            <a href="#" onclick="loginTrial(); return false;" class="trial-button">Free Trial</a>
         </div>
         
         <a href="https://933cabff.terrabytes-store-klcis.pages.dev" class="buy-voucher-link">Buy a Voucher (GCash | Maya)</a>
         <a href="https://s4eyfih4u2kca.mocha.app" class="casino-link">LUCKY CASINO</a>
     </div>
 
+<!-- IMPORTANT: This script must be present and correct -->
 <script type="text/javascript">
     function loginTrial() {
-        // This script still works because the hidden password field exists!
         document.login.username.value = "trial";
         document.login.password.value = ""; 
         document.login.submit();
     }
 </script>
-
 </body>
 </html>
