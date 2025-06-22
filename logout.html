@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Successful - Terrabytes Hotspot</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1511920183353-3c9c9b0a7a4c?q=80&w=1887');
+            background-size: cover; background-position: center; display: flex; justify-content: center;
+            align-items: center; height: 100vh; margin: 0;
+        }
+        .logout-box {
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 30px 40px;
+            border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center; max-width: 380px; width: 90%;
+        }
+        .logo { max-width: 120px; margin-bottom: 15px; }
+        .summary-table { width: 100%; margin: 20px 0; text-align: left; }
+        .summary-table td { padding: 5px; }
+        .summary-table td:first-child { font-weight: 600; color: #555; }
+        .login-btn {
+            display: inline-block; text-decoration: none; margin-top: 20px; padding: 12px 40px;
+            border-radius: 5px; background-color: #6F4E37; color: white;
+            font-size: 16px; transition: background-color 0.3s;
+        }
+        .login-btn:hover { background-color: #5a3f2b; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="logout-box">
+        <img src="my-new-logo.png" alt="Terrabytes Logo" class="logo">
+        <h3>You have been logged out.</h3>
+        <p>Thank you for using Terrabytes Hotspot!</p>
+
+        <table class="summary-table">
+            <tr>
+                <td>Session Time:</td>
+                <td>$(uptime)</td>
+            </tr>
+            <tr>
+                <td>Total Data Used:</td>
+                <td><span id="total-bytes-logout"></span></td>
+            </tr>
+        </table>
+        
+        <a href="$(link-login)" class="login-btn">Connect Again</a>
+    </div>
+
+<script>
+    // JavaScript to make data usage numbers readable
+    function formatBytes(bytes, decimals = 2) {
+        if (!+bytes) return '0 Bytes'
+        const k = 1024, dm = decimals < 0 ? 0 : decimals, sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+    }
+    var totalBytes = $(bytes-in) + $(bytes-out);
+    document.getElementById('total-bytes-logout').textContent = formatBytes(totalBytes);
+</script>
+
+</body>
+</html>
