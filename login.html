@@ -13,14 +13,10 @@
         button { width: 100%; padding: 12px; border: none; border-radius: 5px; background-color: #6F4E37; color: white; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
         button:hover { background-color: #5a3f2b; }
         .error { color: #D8000C; background: #FFBABA; padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
-        .buy-voucher-link, .casino-link { display: block; text-decoration: none; margin-top: 15px; padding: 12px; color: white; border-radius: 5px; font-size: 16px; transition: background-color 0.3s; }
-        .buy-voucher-link { background-color: #A0522D; }
+        .buy-voucher-link { display: block; text-decoration: none; margin-top: 15px; padding: 12px; color: white; border-radius: 5px; font-size: 16px; transition: background-color 0.3s; background-color: #A0522D; }
         .buy-voucher-link:hover { background-color: #844324; }
-        .casino-link { background-color: #dc3545; font-weight: bold; }
-        .casino-link:hover { background-color: #c82333; }
-        .trial-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
-        .trial-button { display: inline-block; text-decoration: none; background-color: #6c757d; color: white; padding: 8px 15px; font-size: 14px; border-radius: 4px; transition: background-color 0.3s; cursor: pointer; }
-        .trial-button:hover { background-color: #5a6268; }
+        .coin-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
+        .coin-button { display: inline-block; background-color: #ff9800; color: white; padding: 10px 25px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: default; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -28,39 +24,25 @@
     <div class="login-box">
         <img src="my-new-logo.png" alt="Terrabytes Logo" class="logo">
         <h2>WELCOME TO TERRABYTES HOTSPOT VOUCHER</h2>
-    
+
         $(if error)<div class="error">$(error)</div>$(endif)
-    
+
         <form name="login" action="$(link-login-only)" method="post">
             <input type="hidden" name="dst" value="$(link-orig)" />
             <input type="hidden" name="popup" value="true" />
             <input type="hidden" name="chap-id" value="$(chap-id)">
             <input type="hidden" name="chap-challenge" value="$(challenge)">
-            <input name="username" type="text" placeholder="Enter Your Voucher Code Here" value="$(username)">
+            <input name="username" type="text" placeholder="Enter Your Code Here" value="$(username)">
             <input name="password" type="hidden">
             <button type="submit">Get Online</button>
         </form>
-    
-        <div class="trial-section">
-            <p style="margin: 0 0 10px 0; font-size: 0.9em;">Or get a one-time free preview:</p>
-            <a href="#" onclick="loginTrial(); return false;" class="trial-button">Get 30-Minute Free Trial</a>
+
+        <div class="coin-section">
+            <p style="margin: 0 0 10px 0; font-size: 0.9em;">Or get access from our machine:</p>
+            <div class="coin-button">INSERT COIN</div>
         </div>
         
         <a href="https://933cabff.terrabytes-store-klcis.pages.dev" class="buy-voucher-link">Buy a Voucher (GCash | Maya)</a>
-        <a href="https://s4eyfih4u2kca.mocha.app" class="casino-link">LUCKY CASINO</a>
     </div>
-
-<!--  ===== AUTO-SUBMIT SCRIPT FOR MAC ADDRESS TRIAL =====  -->
-<script type="text/javascript">
-    function loginTrial() {
-        // Set the username to "T-" followed by the user's MAC address
-        document.login.username.value = "T-" + "$(mac)";
-        // Ensure the password field is empty
-        document.login.password.value = ""; 
-        // THIS IS THE KEY: Immediately submit the form after filling it
-        document.login.submit();
-    }
-</script>
-<!--  ================================================  -->
 </body>
 </html>
