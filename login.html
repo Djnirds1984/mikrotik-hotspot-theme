@@ -28,9 +28,9 @@
     <div class="login-box">
         <img src="my-new-logo.png" alt="Terrabytes Logo" class="logo">
         <h2>WELCOME TO TERRABYTES HOTSPOT VOUCHER</h2>
-
+    
         $(if error)<div class="error">$(error)</div>$(endif)
-
+    
         <form name="login" action="$(link-login-only)" method="post">
             <input type="hidden" name="dst" value="$(link-orig)" />
             <input type="hidden" name="popup" value="true" />
@@ -40,7 +40,7 @@
             <input name="password" type="hidden">
             <button type="submit">Get Online</button>
         </form>
-
+    
         <div class="trial-section">
             <p style="margin: 0 0 10px 0; font-size: 0.9em;">Or get a one-time free preview:</p>
             <a href="#" onclick="loginTrial(); return false;" class="trial-button">Get 30-Minute Free Trial</a>
@@ -50,14 +50,14 @@
         <a href="https://s4eyfih4u2kca.mocha.app" class="casino-link">LUCKY CASINO</a>
     </div>
 
-<!--  ===== UPDATED SCRIPT FOR MAC ADDRESS TRIAL =====  -->
+<!--  ===== AUTO-SUBMIT SCRIPT FOR MAC ADDRESS TRIAL =====  -->
 <script type="text/javascript">
     function loginTrial() {
         // Set the username to "T-" followed by the user's MAC address
         document.login.username.value = "T-" + "$(mac)";
         // Ensure the password field is empty
         document.login.password.value = ""; 
-        // Submit the form
+        // THIS IS THE KEY: Immediately submit the form after filling it
         document.login.submit();
     }
 </script>
